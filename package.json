@@ -34,6 +34,7 @@
     "compile": "npm run clean:build && tsc -p tsconfig.json && tsc -p tsconfig.cjs.json && npm run dts:bundle",
     "dts:bundle": "dts-bundle-generator -o ./lib/index.d.ts --project tsconfig.json --no-banner src/index.ts",
     "lint": "eslint . --ext .ts",
+    "fix": "eslint . --ext .ts --fix",
     "test": "jest",
     "test:watch": "jest --watch",
     "test:coverage": "jest --maxWorkers=4 --silent --noStackTrace --coverage",
