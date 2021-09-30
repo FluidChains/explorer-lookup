@@ -20,7 +20,7 @@ function parsingFunction ({ jsonResponse }: IParsingFunctionAPI): TransactionDat
     }
   }
   const issuingAddress: string = jsonResponse.inputs[0].inputAddress;
-  const remoteHash: string = stripHashPrefix(lastOutput.scriptPubKeyAsm, BLOCKCHAINS.ruta.prefixes);
+  const remoteHash: string = stripHashPrefix(lastOutput.scriptPubKeyAsm, BLOCKCHAINS.rutanio.prefixes);
   const revokedAddresses: string[] = jsonResponse.outputs
     .filter(output => !!output.address)
     .map(output => output.address);
