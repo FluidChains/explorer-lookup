@@ -4,7 +4,7 @@ export enum SupportedChains {
   Ethropst = 'ethropst',
   Ethrinkeby = 'ethrinkeby',
   Exos = 'exos',
-  Rutanio = 'ruta',
+  Rutanio = 'rutanio',
   Mocknet = 'mocknet',
   Regtest = 'regtest',
   Testnet = 'testnet'

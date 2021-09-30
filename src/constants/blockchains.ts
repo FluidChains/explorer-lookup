@@ -91,7 +91,7 @@ const BLOCKCHAINS: { [chain in SupportedChains]: IBlockchainObject } = {
   },
   [SupportedChains.Exos]: {
     code: SupportedChains.Exos,
-    name: 'Bitcoin',
+    name: 'Exos Mainnet',
     prefixes: ['6a20', 'OP_RETURN '],
     signatureValue: 'EXOSMainnet',
     transactionTemplates: {
@@ -102,7 +102,7 @@ const BLOCKCHAINS: { [chain in SupportedChains]: IBlockchainObject } = {
   },
   [SupportedChains.Rutanio]: {
     code: SupportedChains.Rutanio,
-    name: 'Bitcoin',
+    name: 'Rutanio Mainnet',
     prefixes: ['6a20', 'OP_RETURN '],
     signatureValue: 'RUTAMainnet',
     transactionTemplates: {
