@@ -35,6 +35,8 @@ describe('lookForTx test suite', function () {
           priority: -1
         }],
         ethereum: [],
+        exos: [],
+        rutanio: [],
         custom: [{
           getTxData: stubbedCustomExplorer,
           priority: 0

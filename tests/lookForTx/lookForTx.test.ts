@@ -21,7 +21,9 @@ describe('lookForTx test suite', function () {
         bitcoin: [{
           getTxData: stubbedExplorer
         }],
-        ethereum: []
+        ethereum: [],
+        exos: [],
+        rutanio: []
       };
       const stubPrepareExplorerAPIs: sinon.SinonStub = sinon.stub(explorers, 'prepareExplorerAPIs').returns(mockExplorers);
       const output = await lookForTx({
