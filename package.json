@@ -1,5 +1,5 @@
 {
-  "name": "@blockcerts/explorer-lookup",
+  "name": "@fluidchains/explorer-lookup",
   "version": "0.0.0-dev",
   "description": "A low level blockchain explorers lookup",
   "main": "lib/cjs",
