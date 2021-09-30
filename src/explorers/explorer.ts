@@ -7,6 +7,10 @@ import { explorerApi as EtherscanApi } from './ethereum/etherscan';
 import { explorerApi as BlockCypherETHApi } from './ethereum/blockcypher';
 import { explorerApi as BlockstreamApi } from './bitcoin/blockstream';
 import { explorerApi as BlockCypherBTCApi } from './bitcoin/blockcypher';
+import { explorerApi as BlockcoreEXOSApi } from './exos/blockexplorerexos';
+import { explorerApi as CherteroEXOSApi } from './exos/chertero';
+import { explorerApi as BlockcoreRUTAApi } from './rutanio/blockexplorerrutanio';
+import { explorerApi as CherteroRUTAApi } from './rutanio/chertero';
 import { SupportedChains } from '../constants/supported-chains';
 
 export function explorerFactory (TransactionAPIArray: ExplorerAPI[]): TExplorerFunctionsArray {
@@ -52,6 +56,16 @@ const EthereumTransactionAPIArray = [
   BlockCypherETHApi
 ];
 
+const ExosTransactionAPIArray = [
+  BlockcoreEXOSApi,
+  CherteroEXOSApi
+];
+
+const RutanioTransactionAPIArray = [
+  BlockcoreRUTAApi,
+  CherteroRUTAApi
+];
+
 const BlockchainExplorersWithSpentOutputInfo = [
   BlockCypherBTCApi
 ];
@@ -59,5 +73,7 @@ const BlockchainExplorersWithSpentOutputInfo = [
 export {
   BitcoinTransactionAPIArray,
   EthereumTransactionAPIArray,
+  ExosTransactionAPIArray,
+  RutanioTransactionAPIArray,
   BlockchainExplorersWithSpentOutputInfo
 };

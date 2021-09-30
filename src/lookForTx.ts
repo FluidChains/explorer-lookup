@@ -1,3 +1,4 @@
+import 'regenerator-runtime/runtime';
 import { BLOCKCHAINS } from './constants/blockchains';
 import CONFIG from './constants/config';
 import PromiseProperRace from './helpers/promiseProperRace';
@@ -17,6 +18,10 @@ export function getExplorersByChain (chain: SupportedChains, explorerAPIs: TExpl
     case BLOCKCHAINS[SupportedChains.Ethropst].code:
     case BLOCKCHAINS[SupportedChains.Ethrinkeby].code:
       return explorerAPIs.ethereum;
+    case BLOCKCHAINS[SupportedChains.Exos].code:
+      return explorerAPIs.exos;
+    case BLOCKCHAINS[SupportedChains.Rutanio].code:
+      return explorerAPIs.rutanio;
     default:
       if (!explorerAPIs.custom?.length) {
         throw new Error('Chain is not natively supported. Use custom explorers to retrieve tx data.');
@@ -104,6 +109,10 @@ export default async function lookForTx (
   { transactionId, chain, explorerAPIs = [] }:
   { transactionId: string; chain: SupportedChains; explorerAPIs?: ExplorerAPI[] }
 ): Promise<TransactionData> {
+  console.log('txId', transactionId);
+  console.log('chain', chain);
+  console.log('explorerAPIs', explorerAPIs);
+
   const preparedExplorerAPIs = prepareExplorerAPIs(explorerAPIs);
   const lookupQueues = buildPromiseRacesQueue({
     defaultAPIs: getExplorersByChain(chain, preparedExplorerAPIs),

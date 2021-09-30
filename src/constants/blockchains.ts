@@ -10,10 +10,11 @@ export interface IBlockchainObject {
   transactionTemplates: {
     full: string;
     raw: string;
+    vanity: string;
   };
 }
 
-const BLOCKCHAINS: {[chain in SupportedChains]: IBlockchainObject} = {
+const BLOCKCHAINS: { [chain in SupportedChains]: IBlockchainObject } = {
   [SupportedChains.Bitcoin]: {
     code: SupportedChains.Bitcoin,
     name: 'Bitcoin',
@@ -21,7 +22,8 @@ const BLOCKCHAINS: {[chain in SupportedChains]: IBlockchainObject} = {
     signatureValue: 'bitcoinMainnet',
     transactionTemplates: {
       full: `https://blockchain.info/tx/${TRANSACTION_ID_PLACEHOLDER}`,
-      raw: `https://blockchain.info/rawtx/${TRANSACTION_ID_PLACEHOLDER}`
+      raw: `https://blockchain.info/rawtx/${TRANSACTION_ID_PLACEHOLDER}`,
+      vanity: ''
     }
   },
   [SupportedChains.Ethmain]: {
@@ -31,7 +33,8 @@ const BLOCKCHAINS: {[chain in SupportedChains]: IBlockchainObject} = {
     signatureValue: 'ethereumMainnet',
     transactionTemplates: {
       full: `https://etherscan.io/tx/${TRANSACTION_ID_PLACEHOLDER}`,
-      raw: `https://etherscan.io/tx/${TRANSACTION_ID_PLACEHOLDER}`
+      raw: `https://etherscan.io/tx/${TRANSACTION_ID_PLACEHOLDER}`,
+      vanity: ''
     }
   },
   [SupportedChains.Ethropst]: {
@@ -40,7 +43,8 @@ const BLOCKCHAINS: {[chain in SupportedChains]: IBlockchainObject} = {
     signatureValue: 'ethereumRopsten',
     transactionTemplates: {
       full: `https://ropsten.etherscan.io/tx/${TRANSACTION_ID_PLACEHOLDER}`,
-      raw: `https://ropsten.etherscan.io/getRawTx?tx=${TRANSACTION_ID_PLACEHOLDER}`
+      raw: `https://ropsten.etherscan.io/getRawTx?tx=${TRANSACTION_ID_PLACEHOLDER}`,
+      vanity: ''
     }
   },
   [SupportedChains.Ethrinkeby]: {
@@ -49,7 +53,8 @@ const BLOCKCHAINS: {[chain in SupportedChains]: IBlockchainObject} = {
     signatureValue: 'ethereumRinkeby',
     transactionTemplates: {
       full: `https://rinkeby.etherscan.io/tx/${TRANSACTION_ID_PLACEHOLDER}`,
-      raw: `https://rinkeby.etherscan.io/getRawTx?tx=${TRANSACTION_ID_PLACEHOLDER}`
+      raw: `https://rinkeby.etherscan.io/getRawTx?tx=${TRANSACTION_ID_PLACEHOLDER}`,
+      vanity: ''
     }
   },
   [SupportedChains.Mocknet]: {
@@ -59,7 +64,8 @@ const BLOCKCHAINS: {[chain in SupportedChains]: IBlockchainObject} = {
     signatureValue: 'mockchain',
     transactionTemplates: {
       full: '',
-      raw: ''
+      raw: '',
+      vanity: ''
     }
   },
   [SupportedChains.Regtest]: {
@@ -69,7 +75,8 @@ const BLOCKCHAINS: {[chain in SupportedChains]: IBlockchainObject} = {
     signatureValue: 'bitcoinRegtest',
     transactionTemplates: {
       full: '',
-      raw: ''
+      raw: '',
+      vanity: ''
     }
   },
   [SupportedChains.Testnet]: {
@@ -78,7 +85,30 @@ const BLOCKCHAINS: {[chain in SupportedChains]: IBlockchainObject} = {
     signatureValue: 'bitcoinTestnet',
     transactionTemplates: {
       full: `https://testnet.blockchain.info/tx/${TRANSACTION_ID_PLACEHOLDER}`,
-      raw: `https://testnet.blockchain.info/rawtx/${TRANSACTION_ID_PLACEHOLDER}`
+      raw: `https://testnet.blockchain.info/rawtx/${TRANSACTION_ID_PLACEHOLDER}`,
+      vanity: ''
+    }
+  },
+  [SupportedChains.Exos]: {
+    code: SupportedChains.Exos,
+    name: 'Bitcoin',
+    prefixes: ['6a20', 'OP_RETURN '],
+    signatureValue: 'EXOSMainnet',
+    transactionTemplates: {
+      full: `https://core.chertero.com/exos/api/query/transaction/${TRANSACTION_ID_PLACEHOLDER}`,
+      raw: `https://core.chertero.com/exos/api/query/transaction/${TRANSACTION_ID_PLACEHOLDER}`,
+      vanity: `https://explorer.chertero.com/exos/explorer/transaction/${TRANSACTION_ID_PLACEHOLDER}`
+    }
+  },
+  [SupportedChains.Rutanio]: {
+    code: SupportedChains.Rutanio,
+    name: 'Bitcoin',
+    prefixes: ['6a20', 'OP_RETURN '],
+    signatureValue: 'RUTAMainnet',
+    transactionTemplates: {
+      full: `https://core.chertero.com/ruta/api/query/transaction/${TRANSACTION_ID_PLACEHOLDER}`,
+      raw: `https://core.chertero.com/ruta/api/query/transaction/${TRANSACTION_ID_PLACEHOLDER}`,
+      vanity: `https://explorer.chertero.com/ruta/explorer/transaction/${TRANSACTION_ID_PLACEHOLDER}`
     }
   }
 };

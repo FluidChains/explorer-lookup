@@ -1,6 +1,8 @@
 import {
   BitcoinTransactionAPIArray as BitcoinExplorers,
   EthereumTransactionAPIArray as EthereumExplorers,
+  ExosTransactionAPIArray as ExosExplorers,
+  RutanioTransactionAPIArray as RutanioExplorers,
   explorerFactory
 } from './explorer';
 import { TRANSACTION_APIS } from '../constants/api';
@@ -11,6 +13,8 @@ import { bitcoinRPCParsingFunction } from './rpc/bitcoin';
 export interface TDefaultExplorersPerBlockchain {
   bitcoin: TExplorerFunctionsArray;
   ethereum: TExplorerFunctionsArray;
+  exos: TExplorerFunctionsArray;
+  rutanio: TExplorerFunctionsArray;
 }
 
 export type TExplorerAPIs = TDefaultExplorersPerBlockchain & {
@@ -65,7 +69,9 @@ export function overwriteDefaultExplorers (explorerAPIs: ExplorerAPI[] = [], def
 export function getDefaultExplorers (explorerAPIs?: ExplorerAPI[]): TDefaultExplorersPerBlockchain {
   return {
     bitcoin: explorerFactory(overwriteDefaultExplorers(explorerAPIs, BitcoinExplorers)),
-    ethereum: explorerFactory(overwriteDefaultExplorers(explorerAPIs, EthereumExplorers))
+    ethereum: explorerFactory(overwriteDefaultExplorers(explorerAPIs, EthereumExplorers)),
+    exos: explorerFactory(overwriteDefaultExplorers(explorerAPIs, ExosExplorers)),
+    rutanio: explorerFactory(overwriteDefaultExplorers(explorerAPIs, RutanioExplorers))
   };
 }
 
@@ -93,13 +99,15 @@ export function getRPCExplorers (customExplorerAPIs?: ExplorerAPI[]): Partial<TE
 }
 
 export function prepareExplorerAPIs (customExplorerAPIs: ExplorerAPI[]): TExplorerAPIs {
-  const { bitcoin, ethereum } = getDefaultExplorers(customExplorerAPIs);
+  const { bitcoin, ethereum, exos, rutanio } = getDefaultExplorers(customExplorerAPIs);
   const { custom: rpcCustomExplorers } = getRPCExplorers(customExplorerAPIs.filter(e => e.apiType === 'rpc'));
   const restCustomExplorers = explorerFactory(customExplorerAPIs.filter(e => e.apiType !== 'rpc'));
 
   return {
     bitcoin,
     ethereum,
+    exos,
+    rutanio,
     custom: [
       ...rpcCustomExplorers,
       ...restCustomExplorers
